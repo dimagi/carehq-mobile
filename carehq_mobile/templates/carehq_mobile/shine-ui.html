@@ -25,7 +25,7 @@
             },
             proxy: {
                 type: 'ajax',
-                url : '/mepi/api/ShinePatient/?user={{request.user.username}}&api_key={{request.user.api_key.key}}' /* real url goes here */
+                url : '/mepi/api/ShinePatient/?username={{request.user.username}}&api_key={{request.user.api_key.key}}&format=json' /* real url goes here */
             }
         });
         store.load();
