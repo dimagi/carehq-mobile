@@ -26,7 +26,10 @@
             proxy: {
                 type: 'ajax',
                 url : '/mepi/api/ShinePatient/?username={{request.user.username}}&api_key={{request.user.api_key.key}}&format=json', /* real url goes here */
-                root: 'objects'
+                reader: {
+                    type: 'json',
+                    root: 'objects'
+                }
             }
         });
         store.load();
@@ -36,27 +39,14 @@
                 {
                     xtype: 'textfield',
                     name: 'first_name',
-                    label: 'First Name',
-                    readOnly: true
+                    label: 'First Name'
                 },
                 {
                     xtype: 'textfield',
                     name: 'last_name',
-                    label: 'Last Name',
-                    readOnly: true
+                    label: 'Last Name'
                 },
-                {
-                    xtype: 'datepickerfield',
-                    name: 'dob',
-                    label: 'Date of Birth',
-                    readOnly: true
-                },
-                {
-                    xtype: 'textfield',
-                    name: 'gender',
-                    label: 'Gender',
-                    readOnly: true
-                }
+
             ]
         });
 
@@ -69,11 +59,9 @@
                     items: [
 
                         new Ext.Panel({
-                            /* Patient List */
                             itemId: 'patientList',
                             layout: 'vbox',
                             fullscreen: true,
-
                             styleHtmlContent: true,
                             items: [
                                 new Ext.List({itemTpl: '{first_name} {last_name}',
